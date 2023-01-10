@@ -439,10 +439,10 @@ bool do_use_module_1(module *curr_m, cell *p)
 			if (strcmp(lib->name, name))
 				continue;
 
-			char *src = malloc(*lib->len+1);
+			char *src = malloc(lib->len+1);
 			check_heap_error(src);
-			memcpy(src, lib->start, *lib->len);
-			src[*lib->len] = '\0';
+			memcpy(src, lib->start, lib->len);
+			src[lib->len] = '\0';
 			SB(s1);
 			SB_sprintf(s1, "library%c%s", PATH_SEP_CHAR, lib->name);
 			m = load_text(curr_m, src, SB_cstr(s1));
@@ -481,10 +481,10 @@ bool do_use_module_1(module *curr_m, cell *p)
 			if (strcmp(lib->name, name))
 				continue;
 
-			char *src = malloc(*lib->len+1);
+			char *src = malloc(lib->len+1);
 			check_heap_error(src);
-			memcpy(src, lib->start, *lib->len);
-			src[*lib->len] = '\0';
+			memcpy(src, lib->start, lib->len);
+			src[lib->len] = '\0';
 			SB(s1);
 			SB_sprintf(s1, "library/%s", lib->name);
 			m = load_text(curr_m, src, SB_cstr(s1));
@@ -1584,10 +1584,10 @@ static bool autoload_dcg_library(parser *p)
 		if (strcmp(lib->name, "dcgs"))
 			continue;
 
-		char *src = malloc(*lib->len+1);
+		char *src = malloc(lib->len+1);
 		check_error(src);
-		memcpy(src, lib->start, *lib->len);
-		src[*lib->len] = '\0';
+		memcpy(src, lib->start, lib->len);
+		src[lib->len] = '\0';
 		SB(s);
 		SB_sprintf(s, "library/%s", lib->name);
 		module *tmp_m = load_text(p->m, src, SB_cstr(s));

@@ -420,6 +420,7 @@ void pl_destroy(prolog *pl)
 	memset(pl->streams, 0, sizeof(pl->streams));
 
 	free(pl);
+	free_libraries(g_libs);
 }
 
 prolog *pl_create()
@@ -599,6 +600,7 @@ prolog *pl_create()
 	const char *save_filename = pl->user_m->filename;
 
 	// Load some common libraries...
+	g_libs = load_libraries("./library");
 
 	for (library *lib = g_libs; lib->name; lib++) {
 		if (!strcmp(lib->name, "builtins")			// Always need this
@@ -608,7 +610,7 @@ prolog *pl_create()
 			|| !strcmp(lib->name, "dif")			// Common?
 			|| !strcmp(lib->name, "when")			// Common?
 			) {
-			size_t len = *lib->len;
+			size_t len = lib->len;
 			char *src = malloc(len+1);
 			check_error2(src, pl_destroy(pl));
 			memcpy(src, lib->start, len);

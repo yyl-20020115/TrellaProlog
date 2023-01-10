@@ -18,3 +18,5 @@ tpl
 *.gcda
 faultinject*
 /.vs/TrellaProlog
+/x64/Debug
+/x64
