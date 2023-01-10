@@ -3,9 +3,9 @@
 #include <stdint.h>
 
 typedef struct {
-    const char *name;
-    const unsigned char *start;
-    const unsigned int len;
+    char *name;
+    unsigned char *start;
+    unsigned int length;
 } library;
 
 extern library* g_libs;

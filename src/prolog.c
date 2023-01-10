@@ -421,6 +421,7 @@ void pl_destroy(prolog *pl)
 
 	free(pl);
 	free_libraries(g_libs);
+	g_libs = 0;
 }
 
 prolog *pl_create()
@@ -598,9 +599,11 @@ prolog *pl_create()
 
 	pl->user_m->prebuilt = true;
 	const char *save_filename = pl->user_m->filename;
-
+	char fp[1024] = { 0 };
+	_getcwd(fp, sizeof(fp));
+	strcat(fp, "./library");
 	// Load some common libraries...
-	g_libs = load_libraries("./library");
+	g_libs = load_libraries(fp);
 
 	for (library *lib = g_libs; lib->name; lib++) {
 		if (!strcmp(lib->name, "builtins")			// Always need this
@@ -610,7 +613,7 @@ prolog *pl_create()
 			|| !strcmp(lib->name, "dif")			// Common?
 			|| !strcmp(lib->name, "when")			// Common?
 			) {
-			size_t len = lib->len;
+			size_t len = lib->length;
 			char *src = malloc(len+1);
 			check_error2(src, pl_destroy(pl));
 			memcpy(src, lib->start, len);

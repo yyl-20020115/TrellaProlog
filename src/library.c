@@ -1,67 +1,90 @@
 #include "library.h"
-
-extern unsigned char library_builtins_pl[];
-extern unsigned int library_builtins_pl_len;
-extern unsigned char library_lists_pl[];
-extern unsigned int library_lists_pl_len;
-extern unsigned char library_apply_pl[];
-extern unsigned int library_apply_pl_len;
-extern unsigned char library_http_pl[];
-extern unsigned int library_http_pl_len;
-extern unsigned char library_atts_pl[];
-extern unsigned int library_atts_pl_len;
-extern unsigned char library_dcgs_pl[];
-extern unsigned int library_dcgs_pl_len;
-extern unsigned char library_pio_pl[];
-extern unsigned int library_pio_pl_len;
-extern unsigned char library_si_pl[];
-extern unsigned int library_si_pl_len;
-extern unsigned char library_format_pl[];
-extern unsigned int library_format_pl_len;
-extern unsigned char library_charsio_pl[];
-extern unsigned int library_charsio_pl_len;
-extern unsigned char library_assoc_pl[];
-extern unsigned int library_assoc_pl_len;
-extern unsigned char library_ordsets_pl[];
-extern unsigned int library_ordsets_pl_len;
-extern unsigned char library_dict_pl[];
-extern unsigned int library_dict_pl_len;
-extern unsigned char library_freeze_pl[];
-extern unsigned int library_freeze_pl_len;
-extern unsigned char library_dif_pl[];
-extern unsigned int library_dif_pl_len;
-extern unsigned char library_error_pl[];
-extern unsigned int library_error_pl_len;
-extern unsigned char library_when_pl[];
-extern unsigned int library_when_pl_len;
-extern unsigned char library_pairs_pl[];
-extern unsigned int library_pairs_pl_len;
-extern unsigned char library_random_pl[];
-extern unsigned int library_random_pl_len;
-extern unsigned char library_lambda_pl[];
-extern unsigned int library_lambda_pl_len;
-extern unsigned char library_ugraphs_pl[];
-extern unsigned int library_ugraphs_pl_len;
-extern unsigned char library_sqlite3_pl[];
-extern unsigned int library_sqlite3_pl_len;
-extern unsigned char library_sqlite3_register_pl[];
-extern unsigned int library_sqlite3_register_pl_len;
-extern unsigned char library_json_pl[];
-extern unsigned int library_json_pl_len;
-extern unsigned char library_abnf_pl[];
-extern unsigned int library_abnf_pl_len;
-extern unsigned char library_yall_pl[];
-extern unsigned int library_yall_pl_len;
+#include <stdio.h>
+#include <dirent.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 library* g_libs = 0;
+unsigned char* load_file_content(const char* path, unsigned int* plen) {
+	unsigned char* buffer = 0;
+	FILE* fp = fopen(path, "rb");
+	if (fp != 0) {
+		fseek(fp, 0, SEEK_END);
 
-library* load_libraries(const char* dir) {
+		unsigned int lp = ftell(fp);
 
-	return 0;
+		fseek(fp, 0, SEEK_SET);
+
+		if (plen != 0) {
+			buffer = malloc(*plen = lp);
+			if (buffer != 0) {
+				buffer[lp] = '\0';
+				fread(buffer, sizeof(unsigned char), lp, fp);
+			}
+		}
+
+		fclose(fp);
+	}
+
+	return buffer;
+}
+library* load_libraries(const char* path) {
+	library* libs = 0;
+	if (path != 0) {
+		int count = 0;
+		struct dirent* ent = 0;
+		DIR* pDir = 0;
+		char dir[4096] = { 0 };
+		struct stat statbuf = { 0 };
+		if ((pDir = opendir(path)) !=0)
+		{
+			while ((ent = readdir(pDir)) != 0)
+			{
+				stat(dir, &statbuf);
+				if (!S_ISDIR(statbuf.st_mode))
+				{
+					int len = strlen(ent->d_name);
+					if (len>3 && _stricmp(ent->d_name + len - 3, ".pl") == 0) {
+						count++;
+					}
+				}
+
+			} //while
+			closedir(pDir);
+		}
+		int i = 0;
+
+		libs = malloc(sizeof(library) * (count + 1));
+		if (libs != 0) {
+			if ((pDir = opendir(path)) != 0)
+			{
+				while ((ent = readdir(pDir)) != 0)
+				{
+					stat(dir, &statbuf);
+					if (!S_ISDIR(statbuf.st_mode))
+					{
+						int len = strlen(ent->d_name);
+						if (len > 3 && _stricmp(ent->d_name + len - 3, ".pl") == 0) {
+							char* name = _strdup(ent->d_name);
+							name[len - 3] = '\0';
+
+							libs[i].name = name;
+							libs[i].start = load_file_content(ent->d_name, &libs[i].length);
+							i++;
+						}
+					}
+				} //while
+				closedir(pDir);
+			}
+			libs[i].name = 0;
+			libs[i].length = 0;
+			libs[i].start = 0;
+		}
+	}
+	return libs;
 }
 void free_libraries(library* libs) {
 	for (library* lib = libs;lib != 0 && lib->name != 0;lib++) {
-
 		free(lib->name);
 		free(lib->start);
 	}
