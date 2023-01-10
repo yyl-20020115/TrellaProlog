@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\imath\imath.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\attr.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\bbcode.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\bbcode_colors.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\common.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\completers.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\completions.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\editline.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\editline_help.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\editline_history.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\highlight.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\isocline.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\stringbuf.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\term.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\tty.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\tty_esc.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\undo.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\wcwidth.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sre\re.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bags.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base64.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\contrib.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\control.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ffi.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\format.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\functions.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\heap.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\module.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\network.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\parser.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\posix.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\predicates.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\print.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\prolog.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\query.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\skiplist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\streams.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\toplevel.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\unify.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utf8.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\version.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\isocline\src\history.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\historyex.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="src\library.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="tpl.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\imath\imath.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\include\isocline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\attr.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\bbcode.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\completions.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\env.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\highlight.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\history.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\stringbuf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\term.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\tty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\src\undo.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\sre\re.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\win32ports\dirent.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\win32ports\unistd.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\win32ports\sys\time.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\win32ports\sys\wait.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base64.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\builtins.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\cdebug.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\heap.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\history.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\internal.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\library.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\map.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\module.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\network.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\parser.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\prolog.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\query.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\skiplist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\stringbuf.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\trealla.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utf8.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="src\isocline\include\editline.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
