@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-typedef struct {
+typedef struct _library{
     char *name;
     unsigned char *start;
     unsigned int length;
@@ -10,5 +10,5 @@ typedef struct {
 
 extern library* g_libs;
 
-library* load_libraries(const char* dir);
+library* load_libraries(const char* working, const char* subdir);
 void free_libraries(library* libs);

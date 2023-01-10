@@ -7,6 +7,9 @@
 library* g_libs = 0;
 unsigned char* load_file_content(const char* path, unsigned int* plen) {
 	unsigned char* buffer = 0;
+	if (plen != 0) {
+		*plen = 0;
+	}
 	FILE* fp = fopen(path, "rb");
 	if (fp != 0) {
 		fseek(fp, 0, SEEK_END);
@@ -18,7 +21,6 @@ unsigned char* load_file_content(const char* path, unsigned int* plen) {
 		if (plen != 0) {
 			buffer = malloc(*plen = lp);
 			if (buffer != 0) {
-				buffer[lp] = '\0';
 				fread(buffer, sizeof(unsigned char), lp, fp);
 			}
 		}
@@ -28,10 +30,16 @@ unsigned char* load_file_content(const char* path, unsigned int* plen) {
 
 	return buffer;
 }
-library* load_libraries(const char* path) {
+library* load_libraries(const char* workingdir, const char* subdir) {
 	library* libs = 0;
-	if (path != 0) {
-		int count = 0;
+	if (workingdir != 0 && subdir!=0) {
+		char path[2048] = { 0 };
+#ifdef _WIN32
+		snprintf(path, sizeof(path), "%s\\%s", workingdir, subdir);
+#else
+		snprintf(path, sizeof(path), "%s/%s", workingdir, subdir);
+#endif
+		unsigned int count = 0;
 		struct dirent* ent = 0;
 		DIR* pDir = 0;
 		char dir[4096] = { 0 };
@@ -52,9 +60,9 @@ library* load_libraries(const char* path) {
 			} //while
 			closedir(pDir);
 		}
-		int i = 0;
+		unsigned int i = 0;
 
-		libs = malloc(sizeof(library) * (count + 1));
+		libs = malloc(sizeof(library) * count + sizeof(library));
 		if (libs != 0) {
 			if ((pDir = opendir(path)) != 0)
 			{
@@ -67,9 +75,14 @@ library* load_libraries(const char* path) {
 						if (len > 3 && _stricmp(ent->d_name + len - 3, ".pl") == 0) {
 							char* name = _strdup(ent->d_name);
 							name[len - 3] = '\0';
-
 							libs[i].name = name;
-							libs[i].start = load_file_content(ent->d_name, &libs[i].length);
+#ifdef _WIN32
+							snprintf(path, sizeof(path), "%s\\%s\\%s", workingdir, subdir, ent->d_name);
+#else
+							snprintf(path, sizeof(path), "%s/%s/%s", workingdir, subdir, ent->d_name);
+#endif
+
+							libs[i].start = load_file_content(path, &libs[i].length);
 							i++;
 						}
 					}

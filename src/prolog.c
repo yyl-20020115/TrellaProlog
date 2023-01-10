@@ -599,13 +599,12 @@ prolog *pl_create()
 
 	pl->user_m->prebuilt = true;
 	const char *save_filename = pl->user_m->filename;
-	char fp[1024] = { 0 };
-	_getcwd(fp, sizeof(fp));
-	strcat(fp, "./library");
+	char working[1024] = { 0 };
+	_getcwd(working, sizeof(working));
 	// Load some common libraries...
-	g_libs = load_libraries(fp);
+	g_libs = load_libraries(working,"library");
 
-	for (library *lib = g_libs; lib->name; lib++) {
+	for (library *lib = g_libs;lib!=0 && lib->name; lib++) {
 		if (!strcmp(lib->name, "builtins")			// Always need this
 			|| !strcmp(lib->name, "lists")			// Common
 			|| !strcmp(lib->name, "apply")			// Common
