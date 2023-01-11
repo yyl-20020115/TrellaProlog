@@ -716,7 +716,7 @@ static void directives(parser *p, cell *d)
 		char *end = dst + strlen(dst) - 1;
 		*end = '\0';
 
-		ptr->help = *src ? src : dst;
+		ptr->help = _strdup (*src ? src : dst);
 		ptr->iso = iso;
 		ptr->via_directive = true;
 		map_app(p->pl->help, ptr->name, ptr);

@@ -428,6 +428,10 @@ prolog *pl_create()
 {
 	//printf("*** sizeof(cell) = %u bytes\n", (unsigned)sizeof(cell));
 	//assert(sizeof(cell) == 24);
+	char working[1024] = { 0 };
+	_getcwd(working, sizeof(working));
+	// Load some common libraries...
+	g_libs = load_libraries(working, "library");
 
 	prolog *pl = calloc(1, sizeof(prolog));
 
@@ -599,11 +603,7 @@ prolog *pl_create()
 
 	pl->user_m->prebuilt = true;
 	const char *save_filename = pl->user_m->filename;
-	char working[1024] = { 0 };
-	_getcwd(working, sizeof(working));
-	// Load some common libraries...
-	g_libs = load_libraries(working,"library");
-
+	
 	for (library *lib = g_libs;lib!=0 && lib->name; lib++) {
 		if (!strcmp(lib->name, "builtins")			// Always need this
 			|| !strcmp(lib->name, "lists")			// Common

@@ -161,7 +161,7 @@ int main(int ac, char *av[], char * envp[])
 	if ((homedir = getenv("HOME")) == NULL)
 		homedir = ".";
 
-	char histfile[1024];
+	char histfile[1024] = { 0 };
 	snprintf(histfile, sizeof(histfile), "%s/%s", homedir, ".tpl_history");
 	convert_path(histfile);
 	//bool did_load = false;
