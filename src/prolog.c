@@ -428,7 +428,7 @@ prolog *pl_create()
 {
 	//printf("*** sizeof(cell) = %u bytes\n", (unsigned)sizeof(cell));
 	//assert(sizeof(cell) == 24);
-	char working[1024] = { 0 };
+	char working[4096] = { 0 };
 	_getcwd(working, sizeof(working));
 	// Load some common libraries...
 	g_libs = load_libraries(working, "library");
