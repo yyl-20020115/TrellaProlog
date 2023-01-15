@@ -1,3 +1,5 @@
+You may compile and run it with VS2022
+
 Trealla Prolog
 ==============
 
